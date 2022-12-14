@@ -1,0 +1,8 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<path id="Vector" d="M18 8H10C8.89543 8 8 8.89543 8 10V20C8 21.1046 8.89543 22 10 22H18C19.1046 22 20 21.1046 20 20V10C20 8.89543 19.1046 8 18 8Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+<path id="Vector_2" d="M18 30H10C8.89543 30 8 30.8954 8 32V38C8 39.1046 8.89543 40 10 40H18C19.1046 40 20 39.1046 20 38V32C20 30.8954 19.1046 30 18 30Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+<path id="Vector_3" d="M38 8H30C28.8954 8 28 8.89543 28 10V16C28 17.1046 28.8954 18 30 18H38C39.1046 18 40 17.1046 40 16V10C40 8.89543 39.1046 8 38 8Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+<path id="Vector_4" d="M38 26H30C28.8954 26 28 26.8954 28 28V38C28 39.1046 28.8954 40 30 40H38C39.1046 40 40 39.1046 40 38V28C40 26.8954 39.1046 26 38 26Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+</g>
+</svg>

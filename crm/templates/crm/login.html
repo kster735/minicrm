@@ -1,0 +1,56 @@
+{% extends 'crm/index.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block header %}
+    <h1 class=""> Login </h1>
+{% endblock header %}
+
+{% block sidebar %}
+<div class="col-2 min-vh-100 sidebar">
+    <nav class="nav flex-column text-truncate">
+        <a class="nav-link link-light text-truncate fs-1 text-start mb-5" href="/crm">
+            {% load static %}
+            <img src="{% static 'crm/assets/images/logo.svg' %}" alt="contacts"> 
+            <span class="align-bottom"> CRM </span>
+        </a>
+    </nav>
+</div>
+
+{% endblock sidebar %}
+
+{% block content %}
+
+    {% if errormsg %}
+        <b> Error: </b>
+        <b>{{errormsg}}</b>
+    {% endif %}
+
+    {% if username %}
+        <b>{{username}}</b>
+    {% endif %}
+    
+    <div class="container container-sm mt-5 rounded px-3">
+        <h3 class="display-4 mb-5">Put in credentials </h3>
+
+        <form class="row py-5 px-2 rounded-5" action="" method="post">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="userUserName" id="userUserName" placeholder="username" required>
+                <label for="userUserName" class="px-4">username</label>
+            </div>
+    
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="password" required>
+                <label for="userPassword" class="px-4">password</label>
+            </div>
+
+            <div class="my-3">
+                <input type="submit" class="btn btn-primary btn-right mb-3 px-5" value="Login">
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

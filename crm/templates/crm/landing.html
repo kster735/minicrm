@@ -1,0 +1,35 @@
+{% extends 'crm/index.html' %}
+
+{% block sidebar %}
+<div class="col-2 col-md-2 min-vh-100 sidebar">
+    <nav class="nav flex-column text-truncate">
+        <a class="nav-link link-light text-truncate fs-1 text-start mb-5" href="/crm">
+            {% load static %}
+            <img src="{% static 'crm/assets/images/logo.svg' %}" alt="contacts"> 
+            <span class="align-bottom"> miniCRM </span>
+        </a>
+    </nav>
+</div>
+{% endblock sidebar %}
+
+
+{% block header %}
+    <h1 class="mb-5"> Landing Page</h1>
+{% endblock header %}
+{% block content %}
+    <div class="container container-sm w-50 mt-5">
+        <div class="mb-5">
+            <p>
+                This is a Costumer Relationship Managment (CRM) software made with Django framework.
+            </p>
+            <p>
+                CRM is a strategy that companies use to manage interactions with customers and potential customers. CRM helps organisations streamline processes, build customer relationships, increase sales, improve customer service, and increase profitability.
+
+            </p>
+        </div>
+        <div>
+            <a href="{% url 'login' %}" class="btn btn-lg btn-success"> Sign In </a>
+        </div>
+    </div>
+{% endblock content %}
+

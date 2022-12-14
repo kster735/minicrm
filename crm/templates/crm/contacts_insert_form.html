@@ -1,0 +1,67 @@
+{% extends "crm/index.html" %}
+
+{% block title %} 
+    My Contacts - {{user_id}}
+{% endblock %}
+
+{% block header %}
+    <div class="row pt-3">
+        <div class="col-10">
+            <h1 class="">My Contacts</h1> 
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+<h2 >Add Contact to user: {{user.user_firstname}} {{user.user_lastname}} </h2>
+<hr class="mb-5">
+<div class="container container-sm w-75">
+    <form class="row py-5 px-2 rounded-5 " action="contact_store/" method="post">
+        {% csrf_token %}
+        <div class="form-floating mb-3 col-6">
+            <input type="text" class="form-control" name="contactFirstName" id="contactFirstName" placeholder="First Name">
+            <label for="contactFirstName" class="px-4">First Name</label>
+        </div>
+
+        <div class="form-floating mb-3 col-6">
+            <input type="text" class="form-control" name="contactLastName" id="contactLastName" placeholder="Last Name">
+            <label for="contactLastName" class="px-4">Last Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="contactEmail" id="contactEmail" placeholder="email@example.com">
+            <label for="contactEmail" class="px-4">Email</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="contactPhone" id="contactPhone" placeholder="Phone">
+            <label for="contactPhone" class="px-4">Phone</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="contactMobile" id="contactMobile" placeholder="Mobile">
+            <label for="contactMobile" class="px-4">Mobile</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="contactAddress" id="contactAddress" placeholder="Address">
+            <label for="contactAddress" class="px-4">Address</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="contactCompany" id="contactCompany" placeholder="Company">
+            <label for="contactCompany" class="px-4">Company</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="contactVatNo" id="contactVatNo" placeholder="VatNo">
+            <label for="contactVatNo" class="px-4">VatNo</label>
+        </div>
+
+        <div class="my-3">
+            <button type="submit" class="btn btn-lg btn-primary mb-3 px-5">Add</button>
+        </div>
+    </form>
+</div>
+
+  {% endblock content %}

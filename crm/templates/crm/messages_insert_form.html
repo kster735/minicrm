@@ -1,0 +1,105 @@
+{% extends "crm/index.html" %}
+
+{% block title %} 
+    My Contacts - {{user_id}}
+{% endblock %}
+
+{% block header %}
+    <div class="row pt-3">
+        <div class="col-10">
+            <h1 class="">My Messages</h1> 
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+<div class="container container-sm w-75">
+    <h2 class="text-secondary">New Message (user -> {{user_username}}):</h2>
+    <hr class="mb-2">
+    <form class="row py-5 px-2 rounded-5 " action="message_store/" method="post">
+        {% csrf_token %}
+        <div class="mb-3 col-lg-6 col-md-12">
+            <label for="messageTitle" class="">Title:</label>
+            <input type="text" class="form-control" name="messageTitle" id="messageTitle" placeholder="Title" required>
+        </div>
+
+        <div class="mb-3 col-lg-6 col-md-12">
+            <label for="messageContacts" class="">Contact: </label>
+            <input list="messageContacts" name="messageContact" class="form-control" required>
+            <datalist id="messageContacts">
+                {% for c in  contacts %}
+                    <option value="{{c.id}}" class="fs-6"> {{c.contact_lastname}} {{c.contact_firstname}} </option>
+                {% endfor %}
+            </datalist>
+        </div>
+
+        <div class="mb-3 col-12">
+            <textarea type="text-area" class="form-control" name="messageContent" id="messageContent" 
+                placeholder="Content" rows="5" maxlength="255" required></textarea>
+            <div class="invalid-feedback" id="content-invalid-message">
+            </div>
+            <div class="valid-feedback" id="content-valid-message">
+            </div>
+        </div>
+        <script>
+            const txtarea = document.getElementById('messageContent')
+            const contentInvldMsg = document.getElementById('content-invalid-message')
+            const contentVldMsg = document.getElementById('content-valid-message')
+            txtarea.addEventListener('keypress', (e) => {
+                console.log('Text area changed!')
+                console.log(txtarea.value.length)
+                if (txtarea.value.length >= 255 || txtarea.value.lenght == 0) {
+                    contentInvldMsg.innerHTML = "Max 255 characters... " +  " -  Counted: " + txtarea.value.length 
+                    txtarea.classList.remove('is-valid')
+                    txtarea.classList.add('is-invalid')
+                }
+                else {
+                    txtarea.classList.remove('is-invalid')
+                    txtarea.classList.add('is-valid')
+                    contentVldMsg.innerHTML = "Counted: " + txtarea.value.length 
+                }
+            })
+        </script>
+
+        <div class="mb-3 col-6">
+            <label for="messageDateTime" class="">Date and Time:</label>
+            <input type="datetime-local" class="form-control" name="messageDateTime" id="messageDateTime" placeholder="Date Time" required>
+        </div>
+
+        <div class="mb-3 col col-lg-6 col-md-6 col-sm-12">
+            <label for="messageChannels" class="">Channel of Communication: </label>
+            <input list="messageChannels" name="messageChannel"  class="form-control" required>
+            <datalist id="messageChannels" >
+                <option value="Email">
+                <option value="Telephone">
+                <option value="In person">
+                <option value="Fax">
+                <option value="Mail post">
+            </datalist>
+        </div>
+
+        <div class="mb-3 col-6">
+            <label for="messageDueDateTime" class="">Due Date and Time: </label>
+            <input type="datetime-local" class="form-control" name="messageDueDateTime" id="messageDueDateTime" required>
+        </div>
+
+        <div class="mb-5">
+            <label for="messageProcessed" class="px-0">Processed: </label>
+            <input type="checkbox"  name="messageProcessed" id="messageProcessed" value="True">
+            <input type="checkbox"  name="messageProcessed" id="messageProcessed" value="False" hidden>
+        </div>
+
+        <div class="mb-3 col-lg-6 col-md-12">
+            <label for="files">Select files:</label>
+            <input type="file" id="files" name="files" multiple><br><br>
+        </div>
+
+        <div class="my-3">
+            <button type="submit" class="btn btn-primary mb-3 me-2">Add</button>
+            <button type="reset" class="btn btn-warning mb-3">Reset</button>
+        </div>
+    </form>
+</div>
+
+  {% endblock content %}

@@ -1,0 +1,163 @@
+{% load static %}
+
+<div class="col py-3">
+    {% comment %} <h1 class="display-4 text-center"> Dashboard</h1> {% endcomment %}
+    <div class="row container-fluid justify-content-center d-flex-sm flex-column-sm">
+
+        <!-- *******************first Row of DASHBOARD *************************** -->
+
+        <div class="card m-4 col-lg-3 col-sm-9 rounded-5">
+            <div class="card-body">
+                <h5 class="card-title">Summary</h5>
+                <h6 class="card-subtitle mb-2 text-muted">figures</h6>
+                <p class="card-text">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Users:</b> {{users_count}} </li>
+                        <li class="list-group-item text-secondary"><b>active:</b> {{users_active}}</li>
+                        <li class="list-group-item"><b>Contacts:</b> {{contacts_count}}</li>
+                        <li class="list-group-item text-secondary"><b>active:</b> {{contacts_active}}</li>
+                        <li class="list-group-item"><b>Messages:</b> {{messages_count}}</li>
+                        <li class="list-group-item text-danger"><b>overdue: </b> {{messages_overdue}}</li>
+                    </ul>
+                </p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+
+        <div class="card m-4 col-lg-3 col-sm-9  bg-secondary text-light rounded-5">
+            <div class="card-body overflow-hidden">
+                <h5 class="card-title">Contacts</h5>
+                <h6 class="card-subtitle mb-2 text-light"> count{{contacts_count}}</h6>
+                <div class="box bg-secondary">
+                    <div class="percent">
+                        <div class="messages">
+                            <svg class="bg-secondary rounded-circle">
+                                <circle cx="70" cy="70" r="70"
+                                    style="stroke:rgb(224, 224, 224); --percentage-messages:100;"></circle>
+                                <circle cx="70" cy="70" r="70"></circle>
+                            </svg>
+                            <div class="number text-info">
+                                <h2> {{contacts_percentage}}<span>%</span> </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text fs-4">Active</h2>
+                </div>
+
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+
+        <div class="card m-4 col-lg-3 col-sm-9  bg-info text-light rounded-5">
+            <div class="card-body overflow-hidden">
+                <h5 class="card-title">Users</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Contact: John Doe</h6>
+                <div class="box bg-info">
+                    <div class="percent">
+                        <div class="users">
+                            <svg class="bg-info rounded-circle">
+                                <circle cx="70" cy="70" r="70"
+                                    style="stroke:rgb(224, 224, 224); --percentage-users:100;"></circle>
+                                <circle cx="70" cy="70" r="70"></circle>
+                            </svg>
+                            <div class="number text-light">
+                                <h2> {{users_percentage}}<span>%</span> </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text fs-4">Active</h2>
+                </div>
+
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ******************* Second Row of DASHBOARD *************************** -->
+
+    <div class="row container-fluid justify-content-center d-flex-sm flex-column-sm">
+
+
+        <div class="card m-3 col-lg-3 col-sm-9 rounded-5 me-5">
+            <div class="card-body">
+                <h5 class="card-title">Recent Messages</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">
+                    <ul class="list-group">
+                        {% for m in messages_recent %}
+                            <li class="list-group-item"> 
+                                <a href="#">{{m.message_title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+
+
+        <!-- Carousel for Plots -->
+
+         <div class="card m-4 col-lg-6 col-sm-9 rounded-5 ms-5 border-0">
+            <div class="card-body">
+                <h5 class="card-title">Plots</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                    of the card's content.</p>
+                <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="0" class="active" aria-current="true"
+                            aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="{% static  'crm/assets/images/plot1.png' %}">
+                                <img src="{% static  'crm/assets/images/plot1.png' %}" class="d-block w-100" alt="plot1">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="{% static  'crm/assets/images/plot2.png' %}">
+                                <img src="{% static  'crm/assets/images/plot2.png' %}" class="d-block w-100" alt="plot2">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="{% static  'crm/assets/images/plot3.png' %}">
+                                <img src="{% static  'crm/assets/images/plot3.png' %}" class="d-block w-100" alt="plot3">
+                            </a>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+
+
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+</div>

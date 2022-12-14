@@ -1,0 +1,98 @@
+{% extends "crm/index.html" %}
+
+{% block title %} 
+    All Users - {{user_id}}
+{% endblock %}
+
+{% block header %}
+    <div class="row pt-3">
+        <div class="col-10">
+            <h1> All Users </h1> 
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+<h2 >Add User - Admin {{user.user_firstname}} {{user.user_lastname}} </h2>
+<hr class="mb-5">
+
+<div class="container container-sm">
+
+    <form class="row py-5 px-2 rounded-5" action="user_store/" method="post">
+        {% csrf_token %}
+        <h3>Personal Info</h3>
+        <div class="form-floating mb-3 col-6">
+            <input type="text" class="form-control" name="userFirstName" id="userFirstName" placeholder="First Name">
+            <label for="userFirstName" class="px-4">First Name</label>
+        </div>
+
+        <div class="form-floating mb-3 col-6">
+            <input type="text" class="form-control" name="userLastName" id="userLastName" placeholder="Last Name">
+            <label for="userLastName" class="px-4">Last Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="email@example.com">
+            <label for="userEmail" class="px-4">Email</label>
+        </div>
+
+        <h3>Authentication info</h3>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="userUserName" id="userUserName" placeholder="username">
+            <label for="userUserName" class="px-4">username</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="password">
+            <label for="userPassword" class="px-4">password</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="confirm password">
+            <label for="userPasswordConfirm" class="px-4">confirm password</label>
+        </div>
+
+
+
+        <h3>Account settings</h3>
+
+        <div class="mb-3">
+            <label for="userPhoto" class="px-0">Upload your photo:</label>
+            <input type="file" class="form-control" name="userPhoto" id="userPhoto" placeholder="upload your photo">
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="userPhone" id="userPhone" placeholder="Phone">
+            <label for="userPhone" class="px-4">Phone</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="userMobile" id="userMobile" placeholder="Mobile">
+            <label for="userMobile" class="px-4">Mobile</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="userAddress" id="userAddress" placeholder="Address">
+            <label for="userAddress" class="px-4">Address</label>
+        </div>
+
+        <div class"mb-5">
+            <label for="userType" class="px-0">User Type:</label>
+            <input type="number" class="" name="userType" id="userType" placeholder="1" min="1" max="2">
+        </div>
+
+        <div class="mb-5">
+            <label for="userIsActive" class="px-0">Is Active: </label>
+            <input type="checkbox"  name="userIsActive" id="userIsActive" >
+        </div>
+
+        <div class="my-3">
+            <button type="submit" class="btn btn-primary mb-3 px-5">Add</button>
+            <button type="reset" class="btn btn-warning mb-3 px-5 mx-5">Reset</button>
+
+        </div>
+    </form>
+</div>
+
+  {% endblock content %}
